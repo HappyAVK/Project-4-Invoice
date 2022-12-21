@@ -40,4 +40,16 @@ for fpath in filepaths:
         pdf.cell(w=40, h=8, txt=f"{row['price_per_unit']}", border=1)
         pdf.cell(w=40, h=8, txt=f"{row['total_price']}", border=1, ln=1)
 
+    total = df["total_price"].sum()
+    pdf.cell(w=160, h=8, txt="", border=1)
+    pdf.cell(w=40, h=8, txt=f"{total}", border=1, ln=1)
+
+    pdf.set_font(family="Helvetica", size=15)
+    pdf.set_text_color(0, 0, 0)
+    pdf.cell(w=40, h=8, txt=f"{total} is due for payment", ln=1)
+
+    pdf.set_font(family="Helvetica", size=20, style="B")
+    pdf.cell(w=40, h=8, txt=f"PythonHow")
+    pdf.image("pythonhow.png", w=10)
+
     pdf.output(f"pdf/{invoice[0]}.pdf")
